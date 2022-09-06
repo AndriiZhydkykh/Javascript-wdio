@@ -23,5 +23,21 @@ async setMailInput (value) {
 async setUsername (value) {
     await this.usernameInput.setValue(Math.random().toString(36).substring(2,8)+"12AbA");
 }
-//console.log all li name
+//if can not click anything
+async clickTohHeaderProductButton() {
+    get hHheaderProductButton() { return $('[href="/marketplace"]') } 
+    browser.executeAsync("arguments[0].click();",await this.hHheaderProductButton); 
+    await browser.pause(3000)
+    }
 
+// used this script in wdio.config to mobile testing
+browserName: 'chrome',
+        "goog:chromeOptions":{
+            mobileEmulation : { "deviceName": "Nexus 5" } ,
+            args:[
+                '--no-sandbox',
+                '--disable-gpu',
+                '--start-fullscreen',
+                '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36'
+            ]
+        },
